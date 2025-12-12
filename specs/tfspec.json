@@ -1,0 +1,2602 @@
+{
+    "datasources": [
+        {
+            "name": "app_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "preferred_version",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "group_version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "versions",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "group_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_consumer",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the ClusterConsumer"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "brokers",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of Kafka broker addresses to connect to"
+                                    }
+                                },
+                                {
+                                    "name": "client_name",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                    }
+                                },
+                                {
+                                    "name": "condition",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Optional CEL expression to filter which messages get processed"
+                                    }
+                                },
+                                {
+                                    "name": "data",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "delivery_mode",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)"
+                                    }
+                                },
+                                {
+                                    "name": "offset_reset_policy",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets"
+                                    }
+                                },
+                                {
+                                    "name": "path",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "sasl",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "credentials",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL credetnials"
+                                                }
+                                            },
+                                            {
+                                                "name": "mechanism",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL Mechanism"
+                                                }
+                                            },
+                                            {
+                                                "name": "token_url",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional SASL authentication configuration"
+                                    }
+                                },
+                                {
+                                    "name": "tls",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "from_files",
+                                                "single_nested": {
+                                                    "computed_optional_required": "optional",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "ca_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "Path to a certificate authority file."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "cert_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client certificate file location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "key_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client private key location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "skip_verify",
+                                                            "bool": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "If true the client will not verify the server's certificate."
+                                                            }
+                                                        }
+                                                    ],
+                                                    "description": "Certificates files."
+                                                }
+                                            },
+                                            {
+                                                "name": "from_secret",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                }
+                                            },
+                                            {
+                                                "name": "trust_bundle",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional TLS configuration for secure communication"
+                                    }
+                                },
+                                {
+                                    "name": "topic",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka topic to consume messages from"
+                                    }
+                                }
+                            ],
+                            "description": "ClusterConsumerSpec defines the desired state of ClusterConsumer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "connected",
+                                    "bool": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                    }
+                                },
+                                {
+                                    "name": "last_error",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Most recent error message if any"
+                                    }
+                                },
+                                {
+                                    "name": "last_seen",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Timestamp of last successful activity"
+                                    }
+                                },
+                                {
+                                    "name": "message",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Short message about current state or issue"
+                                    }
+                                },
+                                {
+                                    "name": "offsets",
+                                    "list_nested": {
+                                        "computed_optional_required": "computed",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "offset",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Current offset value"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "partition",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Partition number"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Kafka topic name"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Last successfully committed offsets for each partition"
+                                    }
+                                }
+                            ],
+                            "description": "ClusterConsumerStatus defines the observed state of ClusterConsumer."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "cluster_consumer_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "label_selector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "namespace",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "brokers",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of Kafka broker addresses to connect to"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "client_name",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "condition",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Optional CEL expression to filter which messages get processed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "delivery_mode",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "offset_reset_policy",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "path",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "sasl",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "credentials",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "SASL credetnials"
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "mechanism",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "SASL Mechanism"
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "token_url",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Optional SASL authentication configuration"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "tls",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "from_files",
+                                                                "single_nested": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "name": "ca_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "Path to a certificate authority file."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "cert_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "The client certificate file location."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "key_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "The client private key location."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "skip_verify",
+                                                                            "bool": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "If true the client will not verify the server's certificate."
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "description": "Certificates files."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "from_secret",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "trust_bundle",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Optional TLS configuration for secure communication"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Kafka topic to consume messages from"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "ClusterConsumerSpec defines the desired state of ClusterConsumer"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "connected",
+                                                    "bool": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "last_error",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Most recent error message if any"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "last_seen",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Timestamp of last successful activity"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "message",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Short message about current state or issue"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "offsets",
+                                                    "list_nested": {
+                                                        "computed_optional_required": "computed",
+                                                        "nested_object": {
+                                                            "attributes": [
+                                                                {
+                                                                    "name": "offset",
+                                                                    "int64": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Current offset value"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "partition",
+                                                                    "int64": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Partition number"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "topic",
+                                                                    "string": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Kafka topic name"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "description": "Last successfully committed offsets for each partition"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "ClusterConsumerStatus defines the observed state of ClusterConsumer."
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "consumer",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the Consumer"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "brokers",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of Kafka broker addresses to connect to"
+                                    }
+                                },
+                                {
+                                    "name": "client_name",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                    }
+                                },
+                                {
+                                    "name": "condition",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Optional CEL expression to filter which messages get processed"
+                                    }
+                                },
+                                {
+                                    "name": "data",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "delivery_mode",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)"
+                                    }
+                                },
+                                {
+                                    "name": "offset_reset_policy",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets"
+                                    }
+                                },
+                                {
+                                    "name": "path",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "sasl",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "credentials",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL credetnials"
+                                                }
+                                            },
+                                            {
+                                                "name": "mechanism",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL Mechanism"
+                                                }
+                                            },
+                                            {
+                                                "name": "token_url",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional SASL authentication configuration"
+                                    }
+                                },
+                                {
+                                    "name": "tls",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "from_files",
+                                                "single_nested": {
+                                                    "computed_optional_required": "optional",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "ca_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "Path to a certificate authority file."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "cert_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client certificate file location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "key_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client private key location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "skip_verify",
+                                                            "bool": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "If true the client will not verify the server's certificate."
+                                                            }
+                                                        }
+                                                    ],
+                                                    "description": "Certificates files."
+                                                }
+                                            },
+                                            {
+                                                "name": "from_secret",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                }
+                                            },
+                                            {
+                                                "name": "trust_bundle",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional TLS configuration for secure communication"
+                                    }
+                                },
+                                {
+                                    "name": "topic",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka topic to consume messages from"
+                                    }
+                                }
+                            ],
+                            "description": "Spec defines the desired state of the Consumer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "connected",
+                                    "bool": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                    }
+                                },
+                                {
+                                    "name": "last_error",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Most recent error message if any"
+                                    }
+                                },
+                                {
+                                    "name": "last_seen",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Timestamp of last successful activity"
+                                    }
+                                },
+                                {
+                                    "name": "message",
+                                    "string": {
+                                        "computed_optional_required": "computed",
+                                        "description": "Short message about current state or issue"
+                                    }
+                                },
+                                {
+                                    "name": "offsets",
+                                    "list_nested": {
+                                        "computed_optional_required": "computed",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "offset",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Current offset value"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "partition",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Partition number"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Kafka topic name"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Last successfully committed offsets for each partition"
+                                    }
+                                }
+                            ],
+                            "description": "Status defines the observed state of the Consumer"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "consumer_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "label_selector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "Deprecated: a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "alarms",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "critical",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "major",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "minor",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "warning",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "deviations",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "count",
+                                                    "int64": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "namespace",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "brokers",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of Kafka broker addresses to connect to"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "client_name",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "condition",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Optional CEL expression to filter which messages get processed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "delivery_mode",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "offset_reset_policy",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "path",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "sasl",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "credentials",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "SASL credetnials"
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "mechanism",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "SASL Mechanism"
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "token_url",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Optional SASL authentication configuration"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "tls",
+                                                    "single_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "attributes": [
+                                                            {
+                                                                "name": "from_files",
+                                                                "single_nested": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "attributes": [
+                                                                        {
+                                                                            "name": "ca_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "Path to a certificate authority file."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "cert_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "The client certificate file location."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "key_file",
+                                                                            "string": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "The client private key location."
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "name": "skip_verify",
+                                                                            "bool": {
+                                                                                "computed_optional_required": "optional",
+                                                                                "description": "If true the client will not verify the server's certificate."
+                                                                            }
+                                                                        }
+                                                                    ],
+                                                                    "description": "Certificates files."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "from_secret",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                                }
+                                                            },
+                                                            {
+                                                                "name": "trust_bundle",
+                                                                "string": {
+                                                                    "computed_optional_required": "optional",
+                                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                                }
+                                                            }
+                                                        ],
+                                                        "description": "Optional TLS configuration for secure communication"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Kafka topic to consume messages from"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "Spec defines the desired state of the Consumer"
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "connected",
+                                                    "bool": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "last_error",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Most recent error message if any"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "last_seen",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Timestamp of last successful activity"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "message",
+                                                    "string": {
+                                                        "computed_optional_required": "computed",
+                                                        "description": "Short message about current state or issue"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "offsets",
+                                                    "list_nested": {
+                                                        "computed_optional_required": "computed",
+                                                        "nested_object": {
+                                                            "attributes": [
+                                                                {
+                                                                    "name": "offset",
+                                                                    "int64": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Current offset value"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "partition",
+                                                                    "int64": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Partition number"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "topic",
+                                                                    "string": {
+                                                                        "computed_optional_required": "computed",
+                                                                        "description": "Kafka topic name"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "description": "Last successfully committed offsets for each partition"
+                                                    }
+                                                }
+                                            ],
+                                            "description": "Status defines the observed state of the Consumer"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "resource_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "group_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "resources",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "namespaced",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "read_only",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "singular_name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "ui_category",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "provider": {
+        "name": "kafkaimporter"
+    },
+    "resources": [
+        {
+            "name": "cluster_consumer",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "kafkaimporter.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^kafkaimporter\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "ClusterConsumer"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^ClusterConsumer$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "eda-system"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "brokers",
+                                    "list": {
+                                        "computed_optional_required": "required",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of Kafka broker addresses to connect to",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "listvalidator.SizeAtLeast(1)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "client_name",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                    }
+                                },
+                                {
+                                    "name": "condition",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Optional CEL expression to filter which messages get processed"
+                                    }
+                                },
+                                {
+                                    "name": "data",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "delivery_mode",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "AtLeastOnce"
+                                        },
+                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"AtMostOnce\",\n\"AtLeastOnce\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "offset_reset_policy",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "latest"
+                                        },
+                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"latest\",\n\"earliest\",\n\"resume\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "path",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "sasl",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "credentials",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL credetnials"
+                                                }
+                                            },
+                                            {
+                                                "name": "mechanism",
+                                                "string": {
+                                                    "computed_optional_required": "computed_optional",
+                                                    "default": {
+                                                        "static": "plain"
+                                                    },
+                                                    "description": "SASL Mechanism",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"plain\",\n\"scram-sha-256\",\n\"scram-sha-512\",\n\"oauthbearer\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "token_url",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional SASL authentication configuration"
+                                    }
+                                },
+                                {
+                                    "name": "tls",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "from_files",
+                                                "single_nested": {
+                                                    "computed_optional_required": "optional",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "ca_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "Path to a certificate authority file."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "cert_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client certificate file location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "key_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client private key location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "skip_verify",
+                                                            "bool": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "If true the client will not verify the server's certificate."
+                                                            }
+                                                        }
+                                                    ],
+                                                    "description": "Certificates files."
+                                                }
+                                            },
+                                            {
+                                                "name": "from_secret",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                }
+                                            },
+                                            {
+                                                "name": "trust_bundle",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional TLS configuration for secure communication"
+                                    }
+                                },
+                                {
+                                    "name": "topic",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Kafka topic to consume messages from",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "description": "ClusterConsumerSpec defines the desired state of ClusterConsumer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "connected",
+                                    "bool": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                    }
+                                },
+                                {
+                                    "name": "last_error",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Most recent error message if any"
+                                    }
+                                },
+                                {
+                                    "name": "last_seen",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Timestamp of last successful activity"
+                                    }
+                                },
+                                {
+                                    "name": "message",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Short message about current state or issue"
+                                    }
+                                },
+                                {
+                                    "name": "offsets",
+                                    "list_nested": {
+                                        "computed_optional_required": "computed_optional",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "offset",
+                                                    "int64": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Current offset value",
+                                                        "validators": [
+                                                            {
+                                                                "custom": {
+                                                                    "imports": [
+                                                                        {
+                                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+                                                                        }
+                                                                    ],
+                                                                    "schema_definition": "int64validator.AtLeast(0)"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "partition",
+                                                    "int64": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Partition number",
+                                                        "validators": [
+                                                            {
+                                                                "custom": {
+                                                                    "imports": [
+                                                                        {
+                                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+                                                                        }
+                                                                    ],
+                                                                    "schema_definition": "int64validator.AtLeast(0)"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Kafka topic name"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Last successfully committed offsets for each partition"
+                                    }
+                                }
+                            ],
+                            "description": "ClusterConsumerStatus defines the observed state of ClusterConsumer."
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the ClusterConsumer"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "consumer",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "alarms",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "critical",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "major",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "minor",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                },
+                                {
+                                    "name": "warning",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "kafkaimporter.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^kafkaimporter\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "deviations",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "count",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "Consumer"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^Consumer$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "brokers",
+                                    "list": {
+                                        "computed_optional_required": "required",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of Kafka broker addresses to connect to",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "listvalidator.SizeAtLeast(1)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "client_name",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Kafka consumer client name.\nIf not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`"
+                                    }
+                                },
+                                {
+                                    "name": "condition",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Optional CEL expression to filter which messages get processed"
+                                    }
+                                },
+                                {
+                                    "name": "data",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "delivery_mode",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "AtLeastOnce"
+                                        },
+                                        "description": "Message delivery semantics (optional; defaults to AtLeastOnce)",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"AtMostOnce\",\n\"AtLeastOnce\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "offset_reset_policy",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": "latest"
+                                        },
+                                        "description": "Offset reset policy controls which messages are sent to the consumer\nat (re)connection. One of:\n- `latest`: Force offset to latest (skip past msgs)\n- `earliest`: Force offset to beginning\n- `resume`: Use Kafka's committed offsets",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"latest\",\n\"earliest\",\n\"resume\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "path",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                    }
+                                },
+                                {
+                                    "name": "sasl",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "credentials",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "SASL credetnials"
+                                                }
+                                            },
+                                            {
+                                                "name": "mechanism",
+                                                "string": {
+                                                    "computed_optional_required": "computed_optional",
+                                                    "default": {
+                                                        "static": "plain"
+                                                    },
+                                                    "description": "SASL Mechanism",
+                                                    "validators": [
+                                                        {
+                                                            "custom": {
+                                                                "imports": [
+                                                                    {
+                                                                        "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                    }
+                                                                ],
+                                                                "schema_definition": "stringvalidator.OneOf(\n\"plain\",\n\"scram-sha-256\",\n\"scram-sha-512\",\n\"oauthbearer\",\n)"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "token_url",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "token url for OAUTHBEARER SASL mechanism"
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional SASL authentication configuration"
+                                    }
+                                },
+                                {
+                                    "name": "tls",
+                                    "single_nested": {
+                                        "computed_optional_required": "optional",
+                                        "attributes": [
+                                            {
+                                                "name": "from_files",
+                                                "single_nested": {
+                                                    "computed_optional_required": "optional",
+                                                    "attributes": [
+                                                        {
+                                                            "name": "ca_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "Path to a certificate authority file."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "cert_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client certificate file location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "key_file",
+                                                            "string": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "The client private key location."
+                                                            }
+                                                        },
+                                                        {
+                                                            "name": "skip_verify",
+                                                            "bool": {
+                                                                "computed_optional_required": "optional",
+                                                                "description": "If true the client will not verify the server's certificate."
+                                                            }
+                                                        }
+                                                    ],
+                                                    "description": "Certificates files."
+                                                }
+                                            },
+                                            {
+                                                "name": "from_secret",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "Secret containing a `tls.crt`, a `tls.key` and a `ca.crt` keys.\nBoth `tls.crt` and `tls.key` must be present.\nIf `ca.crt` is not present and `.trustBundle` is not set\nthe remote server certificate is not verified."
+                                                }
+                                            },
+                                            {
+                                                "name": "trust_bundle",
+                                                "string": {
+                                                    "computed_optional_required": "optional",
+                                                    "description": "ConfigMap containing a set of trust bundles (key `trust-bundle.pem`) used to\nverify the remote server certificates."
+                                                }
+                                            }
+                                        ],
+                                        "description": "Optional TLS configuration for secure communication"
+                                    }
+                                },
+                                {
+                                    "name": "topic",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "description": "Kafka topic to consume messages from",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtLeast(1)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "description": "Spec defines the desired state of the Consumer"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "connected",
+                                    "bool": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Indicates whether the consumer is currently connected to Kafka"
+                                    }
+                                },
+                                {
+                                    "name": "last_error",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Most recent error message if any"
+                                    }
+                                },
+                                {
+                                    "name": "last_seen",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Timestamp of last successful activity"
+                                    }
+                                },
+                                {
+                                    "name": "message",
+                                    "string": {
+                                        "computed_optional_required": "computed_optional",
+                                        "description": "Short message about current state or issue"
+                                    }
+                                },
+                                {
+                                    "name": "offsets",
+                                    "list_nested": {
+                                        "computed_optional_required": "computed_optional",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "offset",
+                                                    "int64": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Current offset value",
+                                                        "validators": [
+                                                            {
+                                                                "custom": {
+                                                                    "imports": [
+                                                                        {
+                                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+                                                                        }
+                                                                    ],
+                                                                    "schema_definition": "int64validator.AtLeast(0)"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "partition",
+                                                    "int64": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Partition number",
+                                                        "validators": [
+                                                            {
+                                                                "custom": {
+                                                                    "imports": [
+                                                                        {
+                                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+                                                                        }
+                                                                    ],
+                                                                    "schema_definition": "int64validator.AtLeast(0)"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "topic",
+                                                    "string": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Kafka topic name"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Last successfully committed offsets for each partition"
+                                    }
+                                }
+                            ],
+                            "description": "Status defines the observed state of the Consumer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the Consumer"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "version": "0.1"
+}

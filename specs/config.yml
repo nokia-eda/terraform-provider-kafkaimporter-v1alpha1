@@ -1,0 +1,62 @@
+provider:
+  name: kafkaimporter
+
+data_sources:
+  app_group:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com
+      method: GET
+
+  cluster_consumer:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: GET
+
+  cluster_consumer_list:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+      method: GET
+
+  consumer:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: GET
+
+  consumer_list:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+      method: GET
+
+  resource_list:
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1
+      method: GET
+
+resources:
+  cluster_consumer:
+    create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+      method: POST
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: GET
+    update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: PUT
+    delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: DELETE
+
+  consumer:
+    create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+      method: POST
+    read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: GET
+    update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: PUT
+    delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: DELETE

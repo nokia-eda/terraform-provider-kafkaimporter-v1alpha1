@@ -1,0 +1,165 @@
+app_group:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com
+      method: GET
+
+intent_targets:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_targets
+      method: GET
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_targets
+      method: GET
+
+k8_s_topology_request:
+  - create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_topology
+      method: POST
+  - create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_topology
+      method: POST
+
+patch:
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: PATCH
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: PATCH
+
+resource_history:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_revs
+      method: GET
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_revs
+      method: GET
+
+resource_list:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1
+      method: GET
+
+resource_topology:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_topology
+      method: GET
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_topology
+      method: GET
+
+status:
+  - delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: DELETE
+  - delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: DELETE
+
+ui_result:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/_ui/{pathname}
+      method: GET
+
+com.nokia.eda.kafkaimporter.v1alpha1.cluster_consumer:
+  - create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+      method: POST
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: GET
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: PUT
+
+com.nokia.eda.kafkaimporter.v1alpha1.cluster_consumer_list:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+      method: GET
+  - delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+      method: DELETE
+
+com.nokia.eda.kafkaimporter.v1alpha1.cluster_consumer_deleted_resources:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/_deleted
+      method: GET
+
+com.nokia.eda.kafkaimporter.v1alpha1.consumer:
+  - create:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+      method: POST
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: GET
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: PUT
+
+com.nokia.eda.kafkaimporter.v1alpha1.consumer_list:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/consumers
+      method: GET
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+      method: GET
+  - delete:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+      method: DELETE
+
+com.nokia.eda.kafkaimporter.v1alpha1.consumer_deleted_resources:
+  - read:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/_deleted
+      method: GET
+
+totalPaths: 16
+totalSchemas: 61
+usedSchemas: 15
+unusedSchemas: 46
+unusedSchemaList:
+  - AppGroupVersion
+  - ErrorIndex
+  - ErrorItem
+  - ErrorResponse
+  - IntentTarget
+  - K8SPatchOp
+  - OverlayState
+  - Resource
+  - ResourceHistoryEntry
+  - StatusDetails
+  - TopoAttrMetadata
+  - TopoAttribute
+  - TopoBoolExpression
+  - TopoBoolLiteral
+  - TopoElemMetadata
+  - TopoEndpointBoolExpression
+  - TopoField
+  - TopoFixedBoolExpression
+  - TopoLabelSelector
+  - TopoLiteralStatusOrBadge
+  - TopoLiteralValue
+  - TopoLogicalExpression
+  - TopoNodeGrouping
+  - TopoOverlayEndpoint
+  - TopoOverlayEndpointState
+  - TopoOverlayLink
+  - TopoOverlayLinkGroup
+  - TopoOverlayLinkGroupEndpoint
+  - TopoOverlayLinkState
+  - TopoOverlayNode
+  - TopoOverlayNodeOrGroup
+  - TopoOverlayNodeState
+  - TopoOverlayValue
+  - TopoSchema
+  - TopoStateFilter
+  - TopoValue
+  - TopoValueExpression
+  - Topology
+  - com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_DeletedResourceEntry
+  - com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_alarms
+  - com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_deviations
+  - com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_metadata
+  - com.nokia.eda.kafkaimporter.v1alpha1.Consumer_DeletedResourceEntry
+  - com.nokia.eda.kafkaimporter.v1alpha1.Consumer_alarms
+  - com.nokia.eda.kafkaimporter.v1alpha1.Consumer_deviations
+  - com.nokia.eda.kafkaimporter.v1alpha1.Consumer_metadata
