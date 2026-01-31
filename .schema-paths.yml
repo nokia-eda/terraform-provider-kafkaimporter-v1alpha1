@@ -19,14 +19,6 @@ k8_s_topology_request:
       path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_topology
       method: POST
 
-patch:
-  - update:
-      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
-      method: PATCH
-  - update:
-      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
-      method: PATCH
-
 resource_history:
   - read:
       path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_revs
@@ -71,6 +63,9 @@ com.nokia.eda.kafkaimporter.v1alpha1.cluster_consumer:
   - update:
       path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
       method: PUT
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+      method: PATCH
 
 com.nokia.eda.kafkaimporter.v1alpha1.cluster_consumer_list:
   - read:
@@ -95,6 +90,9 @@ com.nokia.eda.kafkaimporter.v1alpha1.consumer:
   - update:
       path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
       method: PUT
+  - update:
+      path: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+      method: PATCH
 
 com.nokia.eda.kafkaimporter.v1alpha1.consumer_list:
   - read:
@@ -114,8 +112,8 @@ com.nokia.eda.kafkaimporter.v1alpha1.consumer_deleted_resources:
 
 totalPaths: 16
 totalSchemas: 61
-usedSchemas: 15
-unusedSchemas: 46
+usedSchemas: 14
+unusedSchemas: 47
 unusedSchemaList:
   - AppGroupVersion
   - ErrorIndex
@@ -124,6 +122,7 @@ unusedSchemaList:
   - IntentTarget
   - K8SPatchOp
   - OverlayState
+  - Patch
   - Resource
   - ResourceHistoryEntry
   - StatusDetails

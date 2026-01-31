@@ -8,7 +8,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/_deleted,GET,com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_DeletedResources,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},DELETE,Status,cluster_consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},GET,com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer,cluster_consumer,true,true,true
-/apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},PATCH,Patch,,false,false,false
+/apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},PATCH,com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},PUT,com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer,cluster_consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_targets,GET,IntentTargets,,false,false,false
@@ -21,7 +21,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/_deleted,GET,com.nokia.eda.kafkaimporter.v1alpha1.Consumer_DeletedResources,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},DELETE,Status,consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},GET,com.nokia.eda.kafkaimporter.v1alpha1.Consumer,consumer,true,true,true
-/apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},PATCH,Patch,,false,false,false
+/apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},PATCH,com.nokia.eda.kafkaimporter.v1alpha1.Consumer,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},PUT,com.nokia.eda.kafkaimporter.v1alpha1.Consumer,consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_targets,GET,IntentTargets,,false,false,false
