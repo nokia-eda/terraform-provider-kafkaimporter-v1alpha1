@@ -44,7 +44,7 @@ If not set defaults to `eda-consumer-${.metadata.namespace}-${.metadata.name}`
 - `condition` (String) Optional CEL expression to filter which messages get processed
 - `data` (String) Go template for the payload to publish.
 Must return a JSON string.
-defaults to {{ index .Msg "data" }}
+defaults to {{ index .msg "data" }}
 - `delivery_mode` (String) Message delivery semantics (optional; defaults to AtLeastOnce)
 - `offset_reset_policy` (String) Offset reset policy controls which messages are sent to the consumer
 at (re)connection. One of:
@@ -52,7 +52,7 @@ at (re)connection. One of:
 - `earliest`: Force offset to beginning
 - `resume`: Use Kafka's committed offsets
 - `path` (String) Go template for where to publish the message
-defaults to {{ index .Msg "path" }}
+defaults to {{ index .msg "path" }}
 - `sasl` (Attributes) Optional SASL authentication configuration (see [below for nested schema](#nestedatt--spec--sasl))
 - `tls` (Attributes) Optional TLS configuration for secure communication (see [below for nested schema](#nestedatt--spec--tls))
 - `topic` (String) Kafka topic to consume messages from
