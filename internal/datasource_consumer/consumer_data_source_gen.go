@@ -119,8 +119,8 @@ func ConsumerDataSourceSchema(ctx context.Context) schema.Schema {
 					},
 					"data": schema.StringAttribute{
 						Optional:            true,
-						Description:         "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}",
-						MarkdownDescription: "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}",
+						Description:         "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}",
+						MarkdownDescription: "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}",
 					},
 					"delivery_mode": schema.StringAttribute{
 						Optional:            true,
@@ -134,8 +134,8 @@ func ConsumerDataSourceSchema(ctx context.Context) schema.Schema {
 					},
 					"path": schema.StringAttribute{
 						Optional:            true,
-						Description:         "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}",
-						MarkdownDescription: "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}",
+						Description:         "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}",
+						MarkdownDescription: "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}",
 					},
 					"sasl": schema.SingleNestedAttribute{
 						Attributes: map[string]schema.Attribute{

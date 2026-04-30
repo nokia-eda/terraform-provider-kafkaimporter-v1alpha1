@@ -214,7 +214,7 @@
                                     "name": "data",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                     }
                                 },
                                 {
@@ -235,7 +235,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                        "description": "Go template for where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                     }
                                 },
                                 {
@@ -433,7 +433,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "a label selector string to filter the results based on CR labels"
+                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
                         }
                     },
                     {
@@ -584,7 +584,7 @@
                                                     "name": "data",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                                     }
                                                 },
                                                 {
@@ -605,7 +605,7 @@
                                                     "name": "path",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                                        "description": "Go template for where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                                     }
                                                 },
                                                 {
@@ -945,7 +945,7 @@
                                     "name": "data",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                     }
                                 },
                                 {
@@ -966,7 +966,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "optional",
-                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                     }
                                 },
                                 {
@@ -1164,7 +1164,7 @@
                         "name": "label_selector",
                         "string": {
                             "computed_optional_required": "computed_optional",
-                            "description": "a label selector string to filter the results based on CR labels"
+                            "description": "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned."
                         }
                     },
                     {
@@ -1322,7 +1322,7 @@
                                                     "name": "data",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                                     }
                                                 },
                                                 {
@@ -1343,7 +1343,7 @@
                                                     "name": "path",
                                                     "string": {
                                                         "computed_optional_required": "optional",
-                                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                                     }
                                                 },
                                                 {
@@ -1814,7 +1814,7 @@
                                     "name": "data",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                     }
                                 },
                                 {
@@ -1865,7 +1865,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Go template for where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                        "description": "Go template for where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                     }
                                 },
                                 {
@@ -2305,7 +2305,7 @@
                                     "name": "data",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}"
+                                        "description": "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}"
                                     }
                                 },
                                 {
@@ -2356,7 +2356,7 @@
                                     "name": "path",
                                     "string": {
                                         "computed_optional_required": "required",
-                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}"
+                                        "description": "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}"
                                     }
                                 },
                                 {
