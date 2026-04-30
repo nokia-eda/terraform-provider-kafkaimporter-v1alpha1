@@ -51,9 +51,9 @@ Required:
 - `brokers` (List of String) List of Kafka broker addresses to connect to
 - `data` (String) Go template for the payload to publish.
 Must return a JSON string.
-defaults to {{ index .msg "data" }}
+defaults to {{ index .Msg "data" }}
 - `path` (String) Go template for where to publish the message
-defaults to {{ index .msg "path" }}
+defaults to {{ index .Msg "path" }}
 - `topic` (String) Kafka topic to consume messages from
 
 Optional:

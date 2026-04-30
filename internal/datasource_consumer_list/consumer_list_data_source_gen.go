@@ -121,8 +121,8 @@ func ConsumerListDataSourceSchema(ctx context.Context) schema.Schema {
 								},
 								"data": schema.StringAttribute{
 									Optional:            true,
-									Description:         "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}",
-									MarkdownDescription: "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .msg \"data\" }}",
+									Description:         "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}",
+									MarkdownDescription: "Go template for the payload to publish.\nMust return a JSON string.\ndefaults to {{ index .Msg \"data\" }}",
 								},
 								"delivery_mode": schema.StringAttribute{
 									Optional:            true,
@@ -136,8 +136,8 @@ func ConsumerListDataSourceSchema(ctx context.Context) schema.Schema {
 								},
 								"path": schema.StringAttribute{
 									Optional:            true,
-									Description:         "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}",
-									MarkdownDescription: "Go template for the path where to publish the message\ndefaults to {{ index .msg \"path\" }}",
+									Description:         "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}",
+									MarkdownDescription: "Go template for the path where to publish the message\ndefaults to {{ index .Msg \"path\" }}",
 								},
 								"sasl": schema.SingleNestedAttribute{
 									Attributes: map[string]schema.Attribute{
@@ -311,8 +311,8 @@ func ConsumerListDataSourceSchema(ctx context.Context) schema.Schema {
 			"label_selector": schema.StringAttribute{
 				Optional:            true,
 				Computed:            true,
-				Description:         "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned.",
-				MarkdownDescription: "A label selector string to filter the results based on resource labels. If specified multiple times, the union of resources which satisfy a label-selector will be returned.",
+				Description:         "a label selector string to filter the results based on CR labels",
+				MarkdownDescription: "a label selector string to filter the results based on CR labels",
 			},
 			"labelselector": schema.StringAttribute{
 				Optional:            true,

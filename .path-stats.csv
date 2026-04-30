@@ -12,6 +12,7 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name},PUT,com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer,cluster_consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_targets,GET,IntentTargets,,false,false,false
+/apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_topology,GET,ResourceTopology,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_topology,POST,K8STopologyRequest,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/consumers,GET,com.nokia.eda.kafkaimporter.v1alpha1.ConsumerList,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers,DELETE,com.nokia.eda.kafkaimporter.v1alpha1.ConsumerList,,false,false,false
@@ -24,4 +25,5 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name},PUT,com.nokia.eda.kafkaimporter.v1alpha1.Consumer,consumer,true,false,true
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_revs,GET,ResourceHistory,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_targets,GET,IntentTargets,,false,false,false
+/apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_topology,GET,ResourceTopology,,false,false,false
 /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}/_topology,POST,K8STopologyRequest,,false,false,false
