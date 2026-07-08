@@ -1,0 +1,41 @@
+datasources:
+  - model_name: app_group
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com
+    oas_schema: AppGroup
+  - model_name: resource_list
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1
+    oas_schema: ResourceList
+  - model_name: cluster_consumer_list
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumerList
+  - model_name: cluster_consumer
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer
+  - model_name: consumer_list
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.ConsumerList
+  - model_name: consumer
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/{name}
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.Consumer
+
+resources:
+  - model_name: cluster_consumer
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer
+  - model_name: consumer
+    oas_endpoint: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers
+    oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.Consumer
+
+qualified:
+  datasources:
+    - oas_schema: IntentTargets
+      get: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_targets
+    - oas_schema: ResourceHistory
+      get: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/{name}/_revs
+    - oas_schema: UIResult
+      get: /apps/kafkaimporter.eda.nokia.com/v1alpha1/_ui/{pathname}
+    - oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.ClusterConsumer_DeletedResources
+      get: /apps/kafkaimporter.eda.nokia.com/v1alpha1/clusterconsumers/_deleted
+    - oas_schema: com.nokia.eda.kafkaimporter.v1alpha1.Consumer_DeletedResources
+      get: /apps/kafkaimporter.eda.nokia.com/v1alpha1/namespaces/{namespace}/consumers/_deleted
+  resources:
